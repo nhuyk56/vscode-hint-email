@@ -8,12 +8,12 @@
   "private": true,
   "dependencies": {
     "fs": "0.0.2",
+    "htmlhint": "git+https://github.com/nhuyk56/htmlhint.git",
     "strip-json-comments": "^2.0.0",
     "vscode-languageserver": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^6.0.41",
-    "htmlhint": "git+https://github.com/nhuyk56/htmlhint.git",
     "typescript": "^2.5.2"
   },
   "scripts": {
