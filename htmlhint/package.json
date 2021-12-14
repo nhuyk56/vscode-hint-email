@@ -3,7 +3,7 @@
   "displayName": "HTMLFarm",
   "description": "VS Code integration for HTMLFarm - A Static Code Analysis Tool for HTML",
   "icon": "HTMLHint.png",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "publisher": "HTMLDevTool",
   "galleryBanner": {
     "color": "#0000FF",
