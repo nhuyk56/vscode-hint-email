@@ -198,21 +198,23 @@ connection.onInitialize((params: server.InitializeParams, token: server.Cancella
     } = params.initializationOptions;
     let nodePath = initOptions ? (initOptions.nodePath ? initOptions.nodePath : undefined) : undefined;
 
-    const result = server.Files.resolveModule2(rootFolder, 'htmlhint', nodePath, trace).
+    /** Origional Global Html Hint */
+    const result = server.Files.resolveModule2(rootFolder, 'htmlhint-123456789', nodePath, trace).
         then((value): server.InitializeResult | server.ResponseError<server.InitializeError> => {
+            /** NEVER GO HERE, WE DONT USE GLOBAL */
             linter = value.default || value.HTMLHint || value;
             //connection.window.showInformationMessage(`onInitialize() - found local htmlhint (version ! ${value.HTMLHint.version})`);
-
             let result: server.InitializeResult = { capabilities: { textDocumentSync: documents.syncKind } };
             return result;
         }, (error) => {
+            // Allway use my HtmlHint
             // didn't find htmlhint in project or global, so use embedded version.
             linter = htmlhint.default || htmlhint.HTMLHint || htmlhint;
             //connection.window.showInformationMessage(`onInitialize() using embedded htmlhint(version ! ${linter.version})`);
             let result: server.InitializeResult = { capabilities: { textDocumentSync: documents.syncKind } };
             return result;
         });
-
+    connection.console.log('Htmlhint Init Success!!!!');
     return result as Thenable<server.InitializeResult>;
 });
 
